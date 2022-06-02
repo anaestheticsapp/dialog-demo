@@ -1,0 +1,34 @@
+:root {
+  color-scheme: light;
+
+  --background1: var(--gray-0);
+  --background2: var(--surface2);
+
+  --text1: var(--gray-9);
+  --text2: var(--gray-8);
+
+  --surface1: var(--gray-2);
+  --surface2: #fff;
+  --surface3: var(--gray-1);
+  --surface4: var(--gray-3);
+
+  --disabled: var(--opacity1);
+  --active: var(--blue-6);
+  --hover: hsl(0deg 0% 0% / 12%);
+
+  --opacity1: 0.3;
+  --opacity2: 0.5;
+  --opacity3: 0.7;
+
+  --brightness: 0%;
+
+  --font-weight1: 300;
+  --font-weight2: 400;
+  --font-weight3: 500;
+  --font-weight4: 700;
+
+  --shadow-color: 220 3% 15%;
+  --shadow-strength: 1%;
+
+  --brand: hsl(var(--hue) calc(var(--saturation) / 2) calc(var(--lightness) / 1.5));
+}

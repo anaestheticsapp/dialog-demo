@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "target": "es2020",
+    "baseUrl": "./src",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "./public/",
+    "removeComments": true,
+    "sourceMap": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "exclude": []
+}

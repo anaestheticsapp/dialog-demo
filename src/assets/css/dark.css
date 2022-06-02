@@ -1,0 +1,34 @@
+:root {
+  color-scheme: dark;
+
+  --background1: hsl(210deg 10% 10%);
+  --background2: hsl(220deg 10% 8%);
+
+  --text1: var(--gray-4);
+  --text2: var(--gray-6);
+
+  --surface1: hsl(210deg 10% 10%);
+  --surface2: hsl(210deg 10% 15%);
+  --surface3: hsl(210deg 5% 20%);
+  --surface4: hsl(210deg 5% 25%);
+
+  --disabled: var(--opacity1);
+  --active: hsl(220deg 75% 70%);
+  --hover: var(--surface3);
+
+  --opacity1: 0.3;
+  --opacity2: 0.5;
+  --opacity3: 0.7;
+
+  --brightness: 100%;
+
+  --font-weight1: 300;
+  --font-weight2: 400;
+  --font-weight3: 500;
+  --font-weight4: 700;
+
+  --shadow-strength: 25%;
+  --shadow-color: 220 40% 2%;
+
+  --brand: hsl(var(--hue) calc(var(--saturation) / 2) calc(var(--lightness) / 1.5));
+}
