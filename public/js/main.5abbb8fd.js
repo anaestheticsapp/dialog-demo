@@ -413,7 +413,7 @@ let AppView = class AppView extends s {
             return;
         const { id } = target.dataset;
         const dialog = this.shadowRoot.getElementById(id);
-        if (id === 'dialog3') {
+        if (id === 'dynamic') {
             this.dialog.showModal(dialog, this.dialogCallback);
         }
         else {
@@ -521,4 +521,4 @@ AppView.styles = [
 AppView = __decorate([
     n$1(category)
 ], AppView);
-//# sourceMappingURL=main.4c5daddd.js.map
+//# sourceMappingURL=main.5abbb8fd.js.map
