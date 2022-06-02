@@ -73,7 +73,6 @@ const ANIMATION = {
 };
 const ELEMENT = {
     DIALOG: 'dialog',
-    FORM: 'form',
     BUTTON: 'button',
 };
 const STYLE = 'style';
@@ -179,7 +178,7 @@ class DialogController {
             }
         }
         else if (btn.type === 'button') {
-            dialog.dispatchEvent(new Event('cancel'));
+            dialog.dispatchEvent(new Event(EVENT.CANCEL_DIALOG));
         }
         else if (this._polyfill) {
             this._polyfill.returnValue = btn.value;
@@ -233,7 +232,7 @@ class DialogController {
         if (this.done)
             this.done = undefined;
         if (this._polyfill)
-            this._handlePolyfill('close');
+            this._handlePolyfill(EVENT.CLOSE_DIALOG);
     }
     showModal(dialog, callback = undefined) {
         if (dialog?.tagName?.toLowerCase() !== ELEMENT.DIALOG)
@@ -425,12 +424,12 @@ let AppView = class AppView extends s {
         return $ `
       <main>
         <section class="demo" @click="${this._onClick}">
-          <button data-id="dialog1">Alert Dialog</button>
-          <button data-id="dialog2">Confirm Dialog</button>
-          <button data-id="dialog3">Dynamic Dialog</button>
-          <button data-id="dialog4">Scrollable Dialog</button>
+          <button data-id="confirm">Confirm Dialog</button>
+          <button data-id="alert">Alert Dialog</button>
+          <button data-id="dynamic">Dynamic Dialog</button>
+          <button data-id="scrollable">Scrollable Dialog</button>
         </section>
-        <dialog id="dialog1">
+        <dialog id="confirm">
           <form method="dialog">
             <header>
               <h1>Are you sure?</h1>
@@ -444,10 +443,10 @@ let AppView = class AppView extends s {
             </footer>
           </form>
         </dialog>
-        <dialog id="dialog2">
+        <dialog id="alert">
           <form method="dialog">
             <header>
-              <h1>Question</h1>
+              <h1>Alert</h1>
             </header>
             <article>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -457,7 +456,7 @@ let AppView = class AppView extends s {
             </footer>
           </form>
         </dialog>
-        <dialog id="dialog3" ?disabled="${this.dialog.done === false}">
+        <dialog id="dynamic" ?disabled="${this.dialog.done === false}">
           <form method="dialog">
             <header>
               <h1>Dynamic Dialog</h1>
@@ -474,7 +473,7 @@ let AppView = class AppView extends s {
             </footer>
           </form>
         </dialog>
-        <dialog id="dialog4">
+        <dialog id="scrollable">
           <form method="dialog">
             <header>
               <svg viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"></path></svg>
@@ -522,4 +521,4 @@ AppView.styles = [
 AppView = __decorate([
     n$1(category)
 ], AppView);
-//# sourceMappingURL=main.0692354b.js.map
+//# sourceMappingURL=main.4c5daddd.js.map
