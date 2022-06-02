@@ -14,7 +14,6 @@ const ANIMATION = {
 }
 const ELEMENT = {
   DIALOG: 'dialog',
-  FORM: 'form',
   BUTTON: 'button',
 }
 const STYLE = 'style';
@@ -145,7 +144,7 @@ export class DialogController implements ReactiveController {
         this.done = undefined;
       }
     } else if (btn.type === 'button') {
-      dialog.dispatchEvent(new Event('cancel'));
+      dialog.dispatchEvent(new Event(EVENT.CANCEL_DIALOG));
     } else if (this._polyfill) {
       this._polyfill.returnValue = btn.value
       const form = this._polyfill.querySelector('form');
@@ -198,7 +197,7 @@ export class DialogController implements ReactiveController {
 
     if (this.error) this.error = undefined;
     if (this.done) this.done = undefined;
-    if (this._polyfill) this._handlePolyfill('close');
+    if (this._polyfill) this._handlePolyfill(EVENT.CLOSE_DIALOG);
   }
 
   public showModal(dialog: HTMLDialogElement, callback = undefined) {
@@ -207,7 +206,7 @@ export class DialogController implements ReactiveController {
     this._callback = callback;
 
     if (typeof dialog.showModal !== 'function') {
-      this._polyfill = dialog as HTMLDialogElement;
+      this._polyfill = dialog;
       this._polyfill.showModal = () => this._handlePolyfill(EVENT.OPEN_DIALOG);
       this._polyfill.close = () => this._handlePolyfill(EVENT.CLOSE_DIALOG);
     }
