@@ -22,7 +22,7 @@ export class AppView extends LitElement {
     if (target.tagName !== 'BUTTON') return;
     const { id } = target.dataset;
     const dialog = this.shadowRoot.getElementById(id) as HTMLDialogElement;
-    if (id === 'dialog3') {
+    if (id === 'dynamic') {
       this.dialog.showModal(dialog, this.dialogCallback);
     } else {
       this.dialog.showModal(dialog);
