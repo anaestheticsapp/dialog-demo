@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
-import { DialogController } from 'controller/dialog';
+import { DialogController, HTMLDialogElement } from 'controller/dialog';
 
 import animations from 'css/animations';
 import button from 'css/button';
@@ -19,9 +19,14 @@ export class AppView extends LitElement {
     return await delay(1000);
   }
   _onClick({ target }) {
+    if (target.tagName !== 'BUTTON') return;
     const { id } = target.dataset;
-    const dialog = this.shadowRoot.getElementById(id);
-    this.dialog.showModal(dialog);
+    const dialog = this.shadowRoot.getElementById(id) as HTMLDialogElement;
+    if (id === 'dialog3') {
+      this.dialog.showModal(dialog, this.dialogCallback);
+    } else {
+      this.dialog.showModal(dialog);
+    }
   }
   render() {
     return html`

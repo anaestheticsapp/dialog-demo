@@ -236,8 +236,10 @@ class DialogController {
             this._handlePolyfill('close');
     }
     showModal(dialog, callback = undefined) {
+        if (dialog?.tagName?.toLowerCase() !== ELEMENT.DIALOG)
+            return console.error('not a dialog element', dialog);
         this._callback = callback;
-        if ('showModal' in dialog === false) {
+        if (typeof dialog.showModal !== 'function') {
             this._polyfill = dialog;
             this._polyfill.showModal = () => this._handlePolyfill(EVENT.OPEN_DIALOG);
             this._polyfill.close = () => this._handlePolyfill(EVENT.CLOSE_DIALOG);
@@ -408,9 +410,16 @@ let AppView = class AppView extends s {
         return await delay(1000);
     }
     _onClick({ target }) {
+        if (target.tagName !== 'BUTTON')
+            return;
         const { id } = target.dataset;
         const dialog = this.shadowRoot.getElementById(id);
-        this.dialog.showModal(dialog);
+        if (id === 'dialog3') {
+            this.dialog.showModal(dialog, this.dialogCallback);
+        }
+        else {
+            this.dialog.showModal(dialog);
+        }
     }
     render() {
         return $ `
@@ -513,4 +522,4 @@ AppView.styles = [
 AppView = __decorate([
     n$1(category)
 ], AppView);
-//# sourceMappingURL=main.8440dd33.js.map
+//# sourceMappingURL=main.0692354b.js.map

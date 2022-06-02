@@ -201,10 +201,12 @@ export class DialogController implements ReactiveController {
     if (this._polyfill) this._handlePolyfill('close');
   }
 
-  public showModal(dialog: HTMLElement, callback = undefined) {
+  public showModal(dialog: HTMLDialogElement, callback = undefined) {
+    if (dialog?.tagName?.toLowerCase() !== ELEMENT.DIALOG) return console.error('not a dialog element', dialog);
+
     this._callback = callback;
 
-    if ('showModal' in dialog === false) {
+    if (typeof dialog.showModal !== 'function') {
       this._polyfill = dialog as HTMLDialogElement;
       this._polyfill.showModal = () => this._handlePolyfill(EVENT.OPEN_DIALOG);
       this._polyfill.close = () => this._handlePolyfill(EVENT.CLOSE_DIALOG);
