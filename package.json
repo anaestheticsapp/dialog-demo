@@ -1,6 +1,6 @@
 {
   "name": "demo-dialog",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Dialog Web Component Demo",
   "main": "index.ts",
   "scripts": {
